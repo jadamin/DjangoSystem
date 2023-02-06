@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Appointment</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="service">Service:</label>
+        <select name="service">
+            <option value="Haircut">Haircut</option>
+            <option value="Manicure">Manicure</option>
+            <option value="Massage">Massage</option>
+        </select>
+    </div>
+    <div>
+        <label for="day">Day:</label>
+        <select name="day">
+            {% for weekday in weekdays %}
+            {% if validateWeekdays[weekday] %}
+                <option value="{{ weekday }}">{{ weekday }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

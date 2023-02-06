@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Appointments in the next 21 days</h2>
+<ul>
+    {% for item in items %}
+    <li>{{ item.user.username }} has a {{ item.service }} appointment on {{ item.day }} at {{ item.time }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

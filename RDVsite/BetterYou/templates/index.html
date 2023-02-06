@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments</title>
+</head>
+<body>
+  <h1>Appointments</h1>
+  <h2>Welcome to the great App</h2>
+  <ul>
+    {% for appointement in appointements %}
+    <li>{{ appointement.user.username }} | day: {{ appointement.day }} | time: {{ appointement.time }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

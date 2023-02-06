@@ -1,0 +1,20 @@
+<!-- templates/bookingSubmit.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">Booking Form</div>
+
+      <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="day">Day</label>
+                <input type="text" class="form-control" id="day" name="day" value="{{ day }}" disabled>
+            </div>
+            <div class="forms-group">
+                <label for="time">Time</label
+{%endblock%}

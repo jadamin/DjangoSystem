@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Appointment</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="time">Time:</label>
+        <select name="time">
+            {% for time in times %}
+                <option value="{{ time }}">{{ time }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
