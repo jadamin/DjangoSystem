@@ -1,20 +1,28 @@
-<!-- templates/bookingSubmit.html -->
-
-{% extends "base.html" %}
-
-{% block content %}
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <div class="card">
-      <div class="card-header">Booking Form</div>
-
-      <div class="card-body">
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="day">Day</label>
-                <input type="text" class="form-control" id="day" name="day" value="{{ day }}" disabled>
-            </div>
-            <div class="forms-group">
-                <label for="time">Time</label
-{%endblock%}
+<html>
+  <head>
+    <title>Booking Submit</title>
+  </head>
+  <body>
+    <h3>Booking Submit</h3>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <label>Time:</label>
+      <select name="time">
+        <option value="">Select a Time</option>
+        {% for time in times %}
+          <option value="{{ time }}">{{ time }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

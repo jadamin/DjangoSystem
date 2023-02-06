@@ -2,11 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css">
+  
   <title>Appointments</title>
 </head>
 <body>
   <h1>Appointments</h1>
   <h2>Welcome to the great App</h2>
+  <a href="login">LogIN</a>
+  <a href="signup">signup</a>
   <ul>
     {% for appointement in appointements %}
     <li>{{ appointement.user.username }} | day: {{ appointement.day }} | time: {{ appointement.time }}</li>

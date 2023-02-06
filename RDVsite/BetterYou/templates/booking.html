@@ -24,6 +24,25 @@
       </select>
       <br>
       <br>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <label>Time:</label>
+      <select name="time">
+        <option value="">Select a Time</option>
+        {% for time in times %}
+          <option value="{{ times }}">{{ time }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <br>
+     
       <input type="submit" value="Submit">
     </form>
   </body>
