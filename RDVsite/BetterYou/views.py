@@ -4,12 +4,11 @@ from datetime import datetime,timedelta
 from .models import * 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-   return render(request, "index.html",{})
+   return render(request, "bookingSubmit.html",{})
 
 
 def login_view(request):
@@ -35,9 +34,25 @@ def signup_view(request):
         user.save()
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('booking')
+        return redirect('bookingSubmit')
     else:
         return render(request, 'signin.html')
+
+
+def view_profile(request):
+    return render(request, 'profile.html')
+
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('view_profile')
+    else:
+        form = UserProfileForm(instance=request.user)
+    return render(request, 'update_profile.html', {'form': form})
 
 
 def booking(request):

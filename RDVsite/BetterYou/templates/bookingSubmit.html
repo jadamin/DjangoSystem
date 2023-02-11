@@ -1,28 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Booking Submit</title>
-  </head>
-  <body>
-    <h3>Booking Submit</h3>
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">  
+<title>HOME</title>
+<body>
+  <nav class="box">
+    <div id="logo">
+      <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+    <ul>
+      <li><a href="booking-submit">Home</a></li>
+      <li><a href="profile" class="btn">My Account</a></li>
+      <li><a href="signup" class="btn">Become member</a></li>
+    </ul>
+  </nav>
+  <header>
+    <section class="text">
+      <h1>Welcome to JAD ONE AI Development Company</h1>
+      <h2>I'am JEHAD AMIN an AI Developer</h2>
+      <h2>Here On My Official Site You Can Reserve An appointement With Me So I Can Help You Create Your Own AI Or Site
+      </h2>
+
+    </section>
+  </header>
+
+  <div class="reco">
+    <h2>Services i'm providing </h2>
+  </div>
+
+  <main>
+
+    <article>
+      <img
+        src="{% static 'images/images.jpeg' %}"
+        alt="AI Development">
+      <h3>AI Development</h3>
+      <a href="booking">Book an appointement</a>
+    </article>
+    <article>
+      <img src="{% static 'images/webdev.jpeg' %}" alt="Web Development">
+      <h3>Web Development</h3>
+      <a href="booking">Book an appointement</a>
+    </article>
+
+
+  </main>
+
+
+  <footer>
+    <div id="logoJADONE">
+      <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+  
+    <section>
+      <h3>Follow us on </h3>
+      <ul>
+        <li><img src="{% static 'images/Instagram_icon.png' %}" alt="Instagram"></li>
+        <li><a href="#">Instagram</a> </li>
+        <li><img src="{% static 'images/facebook.png' %}" alt="Facebook"></li>
+        <li><a href="#">Facebook</a> </li>
+        <li><img src="{% static 'images/twitter-removebg-preview.png' %}" alt="Twitter"></li>
+        <li> <a href="#">Twitter</a> </li>
       </ul>
-    {% endif %}
-    <form method="post">
-      {% csrf_token %}
-      <label>Time:</label>
-      <select name="time">
-        <option value="">Select a Time</option>
-        {% for time in times %}
-          <option value="{{ time }}">{{ time }}</option>
-        {% endfor %}
-      </select>
-      <br>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+    </section>
+  </footer>
+</body>
+
 </html>

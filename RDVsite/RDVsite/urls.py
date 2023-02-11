@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from BetterYou import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +33,10 @@ urlpatterns = [
     path('staff-panel', views.staffPanel, name='staffPanel'),
     path('login', views.login_view, name='login'),
     path('signup', views.signup_view, name='signup'),
+    path('profile/', views.view_profile, name='view_profile'),
+    path('update-profile/', views.update_profile, name='update_profile'),
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
-]
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+urlpatterns += staticfiles_urlpatterns()
