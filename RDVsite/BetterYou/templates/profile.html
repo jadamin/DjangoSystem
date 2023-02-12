@@ -1,19 +1,36 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'styles/profile.css' %}">  
+<link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">  
 
-<div class="container my-5">
-    <h1>{{ user.username }}'s Profile</h1>
-    <hr>
-    <div class="row">
-      <div class="col-md-3">
-        <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail">
-      </div>
-      <div class="col-md-9">
-        <p><strong>Bio:</strong> {{ profile.bio }}</p>
-        <p><strong>Location:</strong> {{ profile.location }}</p>
-        <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
-      </div>
-    </div>
+<body>
+
+<nav class="box">
+  <div>
+    <h1>{{ user.username }}</h1>
   </div>
- 
+  <ul>
+    <li> <a href="logout" class="btn">Logout</a></li>
+  </ul>
+</nav>
+<main class="promain">
+  {% block content %}
+<h1>My Appointments</h1>
+<table>
+    <tr>
+        <th>Appointment Type</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    {% for appointment in appointments %}
+    <tr>
+        <td>{{ appointment.service }}</td>
+        <td>{{ appointment.day }}</td>
+        <td>{{ appointment.time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+</main>
+
+</body>

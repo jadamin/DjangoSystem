@@ -1,88 +1,114 @@
-  body .reco {
-    color: #fff;
-    margin-top: 200px;
-    text-align: center;
-    height:200px;
-      }
-      body {
-        display: flex;
-        font-family: Arial, sans-serif;
-        flex-direction: column;
-        align-items: center;
-        background-image: linear-gradient(to bottom, gray, black);
-    }
-    body > * {
-        max-width: 1100px;
-        width: 95%;
-    }
-    
-  .box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-    padding: 20px;
-    margin-bottom: 100px;
-  }
-  
-  #logo {
-    height: 80px;
-    width: 80px;
-  }
-  
-  #logo img {
-    height: 100%;
-    width: 100%;
-  }
-  
-  nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav li a {
-    color: #fff;
-    display: block;
-    padding: 15px 20px;
-    text-decoration: none;
-  }
-  
-  nav li a:hover {
-    background-color: black;
-  }
-  header {
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body .reco {
+  color: #fff;
+  margin-top: 200px;
+  text-align: center;
+  height: 200px;
+}
+body .name{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 20px;
+  margin-bottom: 100px;
+}
+body {
+  display: flex;
+  font-family: Arial, sans-serif;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(to bottom, gray, black);
+}
 
-  }
-  
-  header .text {
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    width: 800px;
-    
-  }
-  
-  header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  header h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  header h4 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
+body>* {
+  max-width: 1100px;
+  width: 95%;
+}
+body .promain{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  margin: 20px;
+}
+body .promain table{
+  margin: 20px;
+  color: white;
+}
+.col_md_3 img {
+  display: flex;
+  width: 500px;
+  height: 500px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 20px;
+  margin-bottom: 100px;
+}
+
+#logo {
+  height: 80px;
+  width: 80px;
+}
+
+#logo img {
+  height: 100%;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li a {
+  color: #fff;
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: black;
+}
+
+header {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+header .text {
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  width: 800px;
+
+}
+
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+header h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+header h4 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
@@ -91,7 +117,7 @@ main {
   height: 50vh;
 }
 
-main article > * {
+main article>* {
   margin: 12px 0;
   width: 400px;
 }
@@ -107,12 +133,13 @@ main figure img {
 }
 
 main h2 {
-  color:white;
+  color: white;
 }
 
 main article a {
   color: white;
 }
+
 footer {
   display: flex;
   flex-direction: row;

@@ -5,10 +5,21 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.views.generic import UpdateView
+
+
 
 
 def index(request):
-   return render(request, "bookingSubmit.html",{})
+   return render(request, "home.html",{})
+from django.shortcuts import render
+
+
+def view_profile(request):
+    appointments = Appointement.objects.filter(user=request.user)
+    return render(request, 'profile.html', {'appointments': appointments})
 
 
 def login_view(request):
@@ -18,19 +29,44 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('booking')
+            return redirect('bookingSubmit')
         else:
             return render(request, 'login.html', {'error': 'Invalid username or password'})
     else:
         return render(request, 'login.html')
 
 
+def logout_view(request):
+    return redirect('home')
+
+def home_view(request):
+    return render(request, 'home.html')
+
 def signup_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         password = request.POST['password']
-        user = User.objects.create_user(username=username, email=email, password=password)
+        password_confirm = request.POST['password_confirm']
+
+        if password != password_confirm:
+            return render(request, 'signin.html', {'error': 'Passwords do not match'})
+
+        if len(password) < 8:
+            return render(request, 'signin.html', {'error': 'Password must be at least 8 characters long'})
+
+        if not any(char.isdigit() for char in password):
+            return render(request, 'signin.html', {'error': 'Password must contain at least one digit'})
+
+        if not any(char.isupper() for char in password):
+            return render(request, 'signin.html', {'error': 'Password must contain at least one uppercase letter'})
+
+        if not any(char.islower() for char in password):
+            return render(request, 'signin.html', {'error': 'Password must contain at least one lowercase letter'})
+        
+        user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name, password=password)        
         user.save()
         user = authenticate(username=username, password=password)
         login(request, user)
@@ -38,25 +74,8 @@ def signup_view(request):
     else:
         return render(request, 'signin.html')
 
-
-def view_profile(request):
-    return render(request, 'profile.html')
-
-
-@login_required
-def update_profile(request):
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('view_profile')
-    else:
-        form = UserProfileForm(instance=request.user)
-    return render(request, 'update_profile.html', {'form': form})
-
-
 def booking(request):
-    weekdays = validWeekday(22)
+    weekdays = validWeekday(50)
     validateWeekdays = isWeekdayValid(weekdays)
     times = [
             "09:00 AM ","09:40 AM ", "10:20 AM ", "11:00 AM ", "11:40 AM ", "13:30 PM ", "14:10 PM ", "14:50 PM ", "15:30 pm ", "16:10 pm ", "16:50 pm ",
@@ -232,7 +251,7 @@ def userUpdateSubmit(request, id):
 def staffPanel(request):
     today = datetime.today()
     minDate = today.strftime('%Y-%m-%d')
-    deltatime = today + timedelta(days=21)
+    deltatime = today + timedelta(days=50)
     strdeltatime = deltatime.strftime('%Y-%m-%d')
     maxDate = strdeltatime
     #Only show the Appointments 21 days from today

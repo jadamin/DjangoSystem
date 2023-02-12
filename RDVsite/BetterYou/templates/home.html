@@ -1,74 +1,72 @@
+{% load static %}
 
-
+<!DOCTYPE html>
+<html>
 <head>
- 
-    <link rel="stylesheet" href="index.css">
-    <title>HOME</title>
-</head>
-
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">  
+<title>HOME</title>
 <body>
-    <nav class="box">
-        <div id="logo">
-            <img src="JAD_ONE _free-file.png" alt="logo JAD_ONE">
-        </div>
-        <ul>
-            <li><a href="Index">Accueil</a></li>
-            <li><a href="userPanel" class="btn">Espace membre</a></li>
-        </ul>
-    </nav>
-    <header>
-        <section class="text">
-            <h1>Welcome to JAD ONE AI Development</h1>
-            <h2>Bonjour Je suis AMIN JEHAD Developpeur En IA </h2>
-            <h4>Ici Sur Mon site Vous Pouvez Prenndre un Rdv avec moi pour developper votre IA ou Votre Site Internet</h4>
-
-        </section>
-     
-
-    </header>
-
-    <div>
-        <h2>Derniers articles sur le blog</h2>
-        <h4>Recommended</h4>
+  <nav class="box">
+    <div id="logo">
+      <img src="{% static 'images/logo.png' %}" alt="Logo">
     </div>
+    <ul>
+      <li><a href="home">Home</a></li>
+      <li><a href="signup" class="btn">Become member</a></li>
+      <li><a href="login" class="btn">Login </a></li>
+    </ul>
+  </nav>
+  <header>
+    <section class="text">
+      <h1>Welcome to JAD ONE AI Development Company</h1>
+      <h2>I'am JEHAD AMIN an AI Developer</h2>
+      <h2>Here On My Official Site You Can Reserve An appointement With Me So I Can Help You Create Your Own AI Or Site
+      </h2>
 
-    <main class="fmain">
+    </section>
+  </header>
 
-        <article>
-            <img src="images.png" alt="AI Developement">
-            <h3>AI Developement</h3>
-            <a href="booking.html">Book an appointement</a>
-        </article>
-        <article>
-            <img src="webdev.jpeg" alt="Web Developement">
-            <h3>Web Developement</h3>
-            <a href="booking.html">Book an appointement</a>
-        </article>
-       
-        
-    </main>
+  <div class="reco">
+    <h2>Services i'm providing </h2>
+  </div>
+
+  <main>
+
+    <article>
+      <img
+        src="{% static 'images/images.jpeg' %}"
+        alt="AI Development">
+      <h3>AI Development</h3>
+      <a href="login">Book an appointement</a>
+    </article>
+    <article>
+      <img src="{% static 'images/webdev.jpeg' %}" alt="Web Development">
+      <h3>Web Development</h3>
+      <a href="login">Book an appointement</a>
+    </article>
 
 
-    <footer>
-        <div id="logoJADONE">
-            <img src="JAD_ONE _free-file.png" alt="logo JAD_ONE">
-        </div>
-        <ul>
-            <li><a href="About-Me">About Me </a></li>
-            <li><a href="contact">contact</a></li>
-        </ul>
-        <section>
-            <h3>Follow us on </h3>
-            <ul>
-                <li><img src="Instagram_icon.png" alt="Instagram"></li>
-                <li><a href="#">Instagram</a> </li>
-                <li><img src="facebook.png" alt="Facebook"></li>
-                <li><a href="#">Facebook</a> </li>
-                <li><img src="twitter-removebg-preview.png" alt="Twitter"></li>
-                <li> <a href="#">Twitter</a> </li>
-            </ul>
-        </section>
-    </footer>
+  </main>
+
+
+  <footer>
+    <div id="logoJADONE">
+      <img src="{% static 'images/logo.png' %}" alt="Logo">
+    </div>
+  
+    <section>
+      <h3>Follow us on </h3>
+      <ul>
+        <li><img src="{% static 'images/Instagram_icon.png' %}" alt="Instagram"></li>
+        <li><a href="#">Instagram</a> </li>
+        <li><img src="{% static 'images/facebook.png' %}" alt="Facebook"></li>
+        <li><a href="#">Facebook</a> </li>
+        <li><img src="{% static 'images/twitter-removebg-preview.png' %}" alt="Twitter"></li>
+        <li> <a href="#">Twitter</a> </li>
+      </ul>
+    </section>
+  </footer>
 </body>
 
 </html>

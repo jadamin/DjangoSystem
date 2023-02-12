@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.urls import path
 
 
+app_name = 'BetterYou'
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,13 +32,14 @@ urlpatterns = [
     path('user-panel', views.userPanel, name='userPanel'),
     path('user-update/<int:id>', views.userUpdate, name='userUpdate'),
     path('user-update-submit/<int:id>', views.userUpdateSubmit, name='userUpdateSubmit'),
-    path('staff-panel', views.staffPanel, name='staffPanel'),
     path('login', views.login_view, name='login'),
     path('signup', views.signup_view, name='signup'),
     path('profile/', views.view_profile, name='view_profile'),
-    path('update-profile/', views.update_profile, name='update_profile'),
+    path('profile/logout/', views.logout_view, name='logout_view'),
+    path('home',views.home_view,name='home'),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns += staticfiles_urlpatterns()
+
