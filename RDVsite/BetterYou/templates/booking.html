@@ -1,10 +1,14 @@
+{% load static %}
 <html>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/booking.css' %}">  
+
   <head>
     <title>Booking</title>
   </head>
   <body>
     <form method="post">
       {% csrf_token %}
+     <div> 
       <label>Service:</label>
       <select name="service">
         <option value="">Select a Service</option>
@@ -12,6 +16,8 @@
         <option value="AI Development">AI Development</option>
       </select>
       <br>
+    </div>
+     <div> 
       <br>
       <label>Day:</label>
       <select name="day">
@@ -23,6 +29,8 @@
         {% endfor %}
       </select>
       <br>
+    </div>
+     <div>
       <br>
       {% if messages %}
       <ul class="messages">
@@ -31,6 +39,8 @@
         {% endfor %}
       </ul>
     {% endif %}
+     </div>
+   <div>
     <form method="post">
       {% csrf_token %}
       <label>Time:</label>
@@ -42,8 +52,11 @@
       </select>
       <br>
       <br>
-     
-      <input type="submit" value="Submit">
+   </div>
+   <div>
+    <input type="submit" value="Submit">
+   </div>
     </form>
   </body>
 </html>
+
