@@ -12,4 +12,4 @@ class BookAdmin(ModelAdmin):
     ordering = ('publication_date',)
 
 admin.site.register(Book, BookAdmin)
-admin.site.register(Appointement)
+admin.site.register(Appointment)

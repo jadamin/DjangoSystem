@@ -28,18 +28,22 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('booking', views.booking, name='booking'),
-    path('booking-submit', views.bookingSubmit, name='bookingSubmit'),
     path('user-panel', views.userPanel, name='userPanel'),
     path('user-update/<int:id>', views.userUpdate, name='userUpdate'),
     path('user-update-submit/<int:id>', views.userUpdateSubmit, name='userUpdateSubmit'),
     path('login', views.login_view, name='login'),
     path('signup', views.signup_view, name='signup'),
     path('profile/', views.view_profile, name='view_profile'),
-    path('profile/logout/', views.logout_view, name='logout_view'),
+    path('profile/logout/', views.logout_view, name='logout'),
     path('home',views.home_view,name='home'),
+    path('Thefirstpage.html', views.the_first_page, name='the_first_page'),
+
+    
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns += staticfiles_urlpatterns()
+
+
 

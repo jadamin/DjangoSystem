@@ -1,11 +1,27 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>Welcome, {{ user.username }}</h2>
-<h3>Your Appointments:</h3>
-<ul>
-    {% for appointment in appointments %}
-    <li>{{ appointment.service }} on {{ appointment.day }} at {{ appointment.time }}</li>
-    {% endfor %}
-</ul>
+  {% if appointments %}
+    <h2>Your appointments:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Service</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in appointments %}
+          <tr>
+            <td>{{ appointment.day }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.service }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You have no appointments.</p>
+  {% endif %}
 {% endblock %}

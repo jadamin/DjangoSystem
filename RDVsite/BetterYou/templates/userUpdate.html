@@ -1,27 +1,25 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>Update Appointment</h2>
-<form method="post">
-    {% csrf_token %}
-    <div>
-        <label for="service">Service:</label>
-        <select name="service">
-            <option value="Haircut">Haircut</option>
-            <option value="Manicure">Manicure</option>
-            <option value="Massage">Massage</option>
-        </select>
-    </div>
-    <div>
-        <label for="day">Day:</label>
-        <select name="day">
-            {% for weekday in weekdays %}
-            {% if validateWeekdays[weekday] %}
-                <option value="{{ weekday }}">{{ weekday }}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
-    </div>
-    <input type="submit" value="Submit">
-</form>
+  {% if delta24 %}
+    <form method="POST">
+      {% csrf_token %}
+      <select name="service">
+        <option value="">-- Select a service --</option>
+        <option value="Service 1">Service 1</option>
+        <option value="Service 2">Service 2</option>
+      </select>
+      <select name="day">
+        <option value="">-- Select a day --</option>
+        {% for weekday in weekdays %}
+          {% if validateWeekdays|key:weekday %}
+            <option value="{{ weekday }}">{{ weekday }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <button type="submit">Update</button>
+    </form>
+  {% else %}
+    <p>You cannot update appointments less than 24 hours before the appointment time.</p>
+  {% endif %}
 {% endblock %}
