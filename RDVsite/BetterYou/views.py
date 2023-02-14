@@ -6,19 +6,33 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 
+#################################
+#####       INDEX PAGE     #####
+###############################
+
+
 
 def index(request):
    return render(request, "home.html",{})
 from django.shortcuts import render
-#################################
-#####                      #####
-###############################
+
+
+
+#####################################
+##    FUNCTION TO SHOW PROFILE    ##
+###################################
+
+
 def view_profile(request):
     appointments = Appointment.objects.filter(user=request.user)
     return render(request, 'profile.html', {'appointments': appointments})
+
+
 #################################
-#####                      #####
+#####   LOGIN FUNCTION     #####
 ###############################
+
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -31,32 +45,49 @@ def login_view(request):
             return render(request, 'login.html', {'error': 'Invalid username or password'})
     else:
         return render(request, 'login.html')
-#################################
-#####                      #####
-###############################
+    
+
+
+###############################################################
+#####    FUNCTION TO REDIRECT USER TO HOME AFTER LOGIN    #####
+##############################################################
+
+
 def first_view(request):
     return redirect('the_first_page')
 
-#################################
-#####                      #####
-###############################
+
+######################################################
+#####   LOGOUT VIEW TO SHOW USER THE DOOR OUT   #####
+####################################################
+
+
 def logout_view(request):
     return redirect('home')
-#################################
-#####                      #####
-###############################
+
+
+#############################################
+#####  THE FIST PAGE SHOW FIRST PAGE   #####
+###########################################
 
 def the_first_page(request):
     return render(request, 'Thefirstpage.html')
 
-#################################
-#####                      #####
-###############################
+
+########################################################
+#####   FUNCTION TO SHOW FIRST PAGE BEFORE LOGIN   #####
+#######################################################
+
+
 def home_view(request):
     return render(request,'home.html')
+
+
 #################################
-#####                      #####
+#####   SIGNUP FUNCTION    #####
 ###############################
+
+
 def signup_view(request):
     if request.method == 'POST':
         user_name = request.POST['username']
@@ -89,9 +120,11 @@ def signup_view(request):
     else:
         return render(request, 'signin.html')
     
-#################################
-#####                      #####
-###############################
+
+
+##########################################
+#####   BOOK YOUR APPOINTMENT FUNC   #####
+#########################################
 
 
 def booking(request):
@@ -149,9 +182,13 @@ def booking(request):
         'validateWeekdays': validateWeekdays,
         'time': time,
     })
+
+
 #################################
 #####                      #####
 ###############################
+
+
 def userPanel(request):
     user = request.user
     appointments = Appointment.objects.filter(user=user).order_by('day', 'time')
@@ -159,9 +196,13 @@ def userPanel(request):
         'user':user,
         'appointments':appointments,
     })
+
+
 #################################
 #####                      #####
 ###############################
+
+
 def userUpdate(request, id):
     appointment = Appointment.objects.get(pk=id)
     userdatepicked = appointment.day
@@ -195,9 +236,13 @@ def userUpdate(request, id):
             'delta24': delta24,
             'id': id,
         })
+
+
 #################################
 #####                      #####
 ###############################
+
+
 def userUpdateSubmit(request, id):
     user = request.user
     time = [   "09:00  ","09:40  ","10:20  ","11:40  ","13:30  ","14:10  ","14:50  ","15:30  ","16:10  ","16:50  ",
